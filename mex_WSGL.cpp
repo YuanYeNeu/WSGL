@@ -286,7 +286,7 @@ void  cvWatershed(Mat& imgRGB, Mat& BMat,  float compValStep, int labelId,int sp
     
     
     
-    CvMat temp = imgMat; //×ª»¯ÎªCvMatÀàĞÍ£¬¶ø²»ÊÇ¸´ÖÆÊı¾İ
+    CvMat temp = imgMat; //è½¬åŒ–ä¸ºCvMatç±»å‹ï¼Œè€Œä¸æ˜¯å¤åˆ¶æ•°æ®
     cvCopy(& temp, src);
     CvMat temp0 = BMat;
     cvCopy(& temp0, dst);
@@ -348,14 +348,11 @@ void  cvWatershed(Mat& imgRGB, Mat& BMat,  float compValStep, int labelId,int sp
     for (j = 0; j < size.width; j++)
     {
         mask[j] = mask[j + mstep*(size.height - 1)] = WSHED;
-        iflabeled[j] = iflabeled[j + mstep*(size.height - 1)] = RELABELED;
     }
     for (i = 1; i < size.height - 1; i++)
     {
         img += istep; mask += mstep;
         mask[0] = mask[size.width - 1] = WSHED;
-        
-        iflabeled[0] = iflabeled[size.width - 1] = RELABELED;
         for (j = 1; j < size.width - 1; j++)
         {
             int* m = mask + j;
